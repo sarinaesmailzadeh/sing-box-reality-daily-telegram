@@ -96,7 +96,7 @@ Another Method for modify setting.json
 
 ```
 cd /root
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
 nano /root/setting.json
 ```
 [ آموزش کار کردن با نانو](https://www.youtube.com/watch?v=Aj2pmC0u2ow)<br />
@@ -104,7 +104,7 @@ nano /root/setting.json
 
 
 ```
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
 
 ```
 
@@ -171,7 +171,7 @@ You can also edit your file with nano editor. <br />
 
 ```
 rm -rf /root/setting*
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
 nano setting.json
 ```
 And then modify your json file. <br />
@@ -211,7 +211,7 @@ Download bash files and add permission for execute.
 ```
 cd /root
 
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/first-time-install-sing-box.sh
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
 sudo chmod +x /root/first-time-install-sing-box.sh
 
@@ -276,7 +276,7 @@ echo "{
 
 After install that explain in upper section. you can change scheduler time in the cronjob.
 ```
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/first-time-install-sing-box.sh
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
 ```
 
@@ -441,7 +441,7 @@ Reinstall the first time install the sing box
 cd /root
 
 rm -rf /root/first-time-install-sing-box.sh*
-wget https://raw.githubusercontent.com/GhostOfSarina/sing-box-daily-telegram/main/first-time-install-sing-box.sh
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
 sudo chmod +x /root/first-time-install-sing-box.sh
 
