@@ -47,6 +47,8 @@ func Block(newReality RealityJson) RealityJson {
 		Outbound: "block",
 	}
 
+	newReality.Log.Level = "warning"
+
 	return newReality
 
 }

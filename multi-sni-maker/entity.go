@@ -1,6 +1,9 @@
 package main
 
 type RealityJson struct {
+	Log struct {
+		Level string `json:"level"`
+	} `json:"log"`
 	DNS struct {
 		Servers  []Server `json:"servers"`
 		Strategy string   `json:"strategy"`
@@ -79,4 +82,6 @@ type Setting struct {
 	ChannelName            string   `json:"channel_name"`
 	SendVNstat             bool     `json:"send_vnstat"`
 	AggregateSubscriptions []string `json:"aggregate_subscriptions"`
+	SendSubscriptions      bool     `json:"send_subscriptions"`
+	SendConfiguration      string   `json:"send_configuration"`
 }

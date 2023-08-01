@@ -56,6 +56,9 @@ Edit this setting file base on your needs.<br />
 ```send_vnstat``` is the boolean value that you want to send ( Bandwidth usage ) vnstat information to the channel. <br />
 ```list_of_subscriptions``` is list of other services that you want to aggregate . if you don't need it leave it without data  ```aggregate_subscriptions : []```
 
+```send_configuration``` is send configuration to the channel. you can choose ```all``` or ```first``` or ```none``` <br />
+```send_subscriptions``` is send subscription to the channel. you can choose ```true``` or ```false```  <br />
+
 
 ```
 cd /root
@@ -85,7 +88,9 @@ echo "{
     \"dynamic_subscription\" : true,
     \"channel_name\" : \"Sarina_Esmailzadeh\",
     \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : []
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
 
 }">  /root/setting.json
 ```
@@ -156,7 +161,9 @@ You have to see below result. <br />
    "dynamic_subscription" : false,
    "channel_name" : "Sarina_Esmailzadeh",
    "send_vnstat" : true,
-   "aggregate_subscriptions" : []
+   "aggregate_subscriptions" : [],
+   "send_configuration" : "first",
+   "send_subscriptions" : true
 
 }
 
@@ -269,7 +276,9 @@ echo "{
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"sarina\",
     \"send_vnstat\" : false,
-    \"aggregate_subscriptions\" : []
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
 
 }">  /root/setting.json
 ```
@@ -323,7 +332,9 @@ echo "{
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"Sarina\",
     \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : []
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
 
 }">  /root/setting.json
 ```
@@ -363,7 +374,9 @@ echo "{
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"Sarina\",
     \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : []
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
 
 }">  /root/setting.json
 ```
@@ -416,7 +429,9 @@ echo "{
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"Sarina\",
     \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : [ \"http://1.22.33.444/subscribe.txt\" , \"http://2.22.33.444/subscribe.txt\" , \"http://3.22.33.444/subscribe.txt\"]
+    \"aggregate_subscriptions\" : [ \"http://1.22.33.444/subscribe.txt\" , \"http://2.22.33.444/subscribe.txt\" , \"http://3.22.33.444/subscribe.txt\"],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
 
 }">  /root/setting.json
 ```

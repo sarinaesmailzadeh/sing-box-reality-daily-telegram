@@ -58,20 +58,31 @@ func main() {
 
 	//call Telegram
 	if len(setting.BotToken) > 4 && len(setting.ChatID) > 4 {
-		err = CallTelegram(StringConfigZero, setting)
-		if err != nil {
-			fmt.Printf("error %s", err)
-		}
 
-		if len(setting.AggregateSubscriptions) > 0 {
-			err = CallTelegram("Aggregate link is: \nhttp://"+serverIP+"/"+AggregateSubscriptionNameLink, setting)
+		if setting.SendConfiguration == "first" {
+			err = CallTelegram(StringConfigZero, setting)
 			if err != nil {
 				fmt.Printf("error %s", err)
 			}
-		} else {
-			err = CallTelegram("You can also use this link to subscribe to all configuration:\nhttp://"+serverIP+"/"+subscriptionNameLink, setting)
+		} else if setting.SendConfiguration == "all" {
+			err = CallTelegram(StringConfigAll, setting)
 			if err != nil {
 				fmt.Printf("error %s", err)
+			}
+		}
+
+		if setting.SendSubscriptions {
+
+			if len(setting.AggregateSubscriptions) > 0 {
+				err = CallTelegram("Aggregate link is: \nhttp://"+serverIP+"/"+AggregateSubscriptionNameLink, setting)
+				if err != nil {
+					fmt.Printf("error %s", err)
+				}
+			} else {
+				err = CallTelegram("You can also use this link to subscribe to all configuration:\nhttp://"+serverIP+"/"+subscriptionNameLink, setting)
+				if err != nil {
+					fmt.Printf("error %s", err)
+				}
 			}
 		}
 	}

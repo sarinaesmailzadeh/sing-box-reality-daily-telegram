@@ -23,5 +23,7 @@
     "dynamic_subscription" : false,
     "channel_name" : "Sarina_Esmailzadeh",
     "send_vnstat" : true,
-    "aggregate_subscriptions" : []
+    "aggregate_subscriptions" : [],
+    "send_configuration" : "all",
+    "send_subscriptions" : true
  }
