@@ -223,6 +223,7 @@ ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=infinity
+StandardOutput=null
 
 [Install]
 WantedBy=multi-user.target

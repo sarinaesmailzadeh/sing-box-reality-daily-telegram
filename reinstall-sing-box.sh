@@ -20,6 +20,8 @@ ls -laht /var/log
 echo "hi" > /var/log/syslog
 echo "hi" > /var/log/syslog.1
 
+journalctl --vacuum-time=1d
+
 
 
 echo "Unistall DONE!"
