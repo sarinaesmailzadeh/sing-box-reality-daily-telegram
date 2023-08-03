@@ -447,7 +447,7 @@ If you want to aggregate subscriptions with serverless system better used below 
 
 Show errors of cron jobs
 ```
-/root/cronjob.log
+cat /root/cronjob.log
 ```
 
 Reinstall the first time install the sing box

@@ -31,6 +31,8 @@ apt-get install iftop
 apt-get install vnstat
 apt-get install speedtest-cli
 apt-get install net-tools
+apt-get install git
+apt-get install cron
 apt-get install -y jq
 
 journalctl --vacuum-time=1d
