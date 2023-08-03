@@ -567,6 +567,22 @@ rm /root/setting.json
 ```
 
 
+## remove logs
+
+```
+df -h
+
+ls -laht /var/log
+
+echo "" > /var/log/kern.log
+echo "" > /var/log/syslog
+echo "" > /var/log/syslog.1
+service syslog restart
+journalctl --vacuum-size=50M
+```
+
+
+
 # Find Best SNI for the sing-box
 
 You can find the best SNI with the following github repository:
