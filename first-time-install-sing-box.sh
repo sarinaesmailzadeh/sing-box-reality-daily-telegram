@@ -33,7 +33,14 @@ apt-get install speedtest-cli
 apt-get install net-tools
 apt-get install -y jq
 
-journalctl --vacuum-size=50M
+journalctl --vacuum-time=1d
+
+
+timedatectl set-timezone UTC
+timedatectl
+echo "UTC" | sudo tee /etc/timezone
+cat /etc/timezone
+
 
 
 # Check if reality.json, sing-box, and sing-box.service already exist
