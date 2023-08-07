@@ -190,6 +190,45 @@ If these method didn't work for use FileZilla to upload file directly to the ser
 
 
 
+# Make setting without telegram and change SSH configuration
+
+In this case you need to connect server with subscription only. <br />
+
+```
+cd /root
+touch /root/setting.json
+echo "{
+    \"ports\": [8585, 2054, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095 ],
+    \"domains\": [
+        \"ftp.debian.org\",
+        \"discord.com\",
+        \"datadoghq.com\",
+        \"speed.cloudflare.com\",
+        \"www.speedtest.net\",
+        \"aws.amazon.com\",
+        \"account.zula.ir\",
+        \"taunusgaerten.com\",
+        \"pantercon.net\",
+        \"nachtzug.net\",
+        \"ballinstadt.de\",
+        \"atrpoosh.ir\",
+        \"atrsun.com\",
+        \"faraso.org\",
+        \"hamiseir.ir\"
+    ],
+    \"bot_token\" : \"\",
+    \"chat_id\" : \"\",
+    \"donate_url\" : \"\",
+    \"dynamic_subscription\" : false,
+    \"channel_name\" : \"sarina\",
+    \"send_vnstat\" : false,
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"none\",
+    \"send_subscriptions\" : false
+
+}">  /root/setting.json
+```
+
 # How to install
 For fast way install and run this service you need download below files and execute them. 
 For security reason, I recommend you to change ssh port. change 9001 to any port that you want.
