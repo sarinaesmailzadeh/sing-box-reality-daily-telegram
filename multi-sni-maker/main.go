@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"time"
 )
 
 func main() {
@@ -33,7 +34,7 @@ func main() {
 	fmt.Println("renew configuration...")
 
 	//renew existing reality json
-	StringConfigZero, StringConfigAll, newReality := RenewConfigurations(setting, serverIP, newReality)
+	StringConfigZero, StringConfigAll, newReality, SliceConfigAll := RenewConfigurations(setting, serverIP, newReality)
 
 	//block bad websites
 	newReality = Block(newReality)
@@ -65,10 +66,15 @@ func main() {
 				fmt.Printf("error %s", err)
 			}
 		} else if setting.SendConfiguration == "all" {
-			err = CallTelegram(StringConfigAll, setting)
-			if err != nil {
-				fmt.Printf("error %s", err)
+
+			for _, currentConfig := range SliceConfigAll {
+				err = CallTelegram(currentConfig, setting)
+				if err != nil {
+					fmt.Printf("error %s", err)
+				}
+				time.Sleep(1 * time.Second)
 			}
+
 		}
 
 		if setting.SendSubscriptions {

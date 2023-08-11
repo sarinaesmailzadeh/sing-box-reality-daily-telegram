@@ -6,7 +6,11 @@ import (
 	"github.com/google/uuid"
 )
 
-func RenewConfigurations(setting Setting, serverIP string, newReality RealityJson) (StringConfigZero string, StringConfigAll string, outReality RealityJson) {
+func RenewConfigurations(setting Setting, serverIP string, newReality RealityJson) (
+	StringConfigZero string,
+	StringConfigAll string,
+	outReality RealityJson,
+	SliceConfigAll []string) {
 
 	publicKey := getPublicKey()
 
@@ -61,9 +65,11 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 
 		StringConfigAll += StringConfig + "\n"
 
+		SliceConfigAll = append(SliceConfigAll, StringConfig)
+
 	}
 
 	outReality = newReality
-	return StringConfigZero, StringConfigAll, outReality
+	return StringConfigZero, StringConfigAll, outReality, SliceConfigAll
 
 }
