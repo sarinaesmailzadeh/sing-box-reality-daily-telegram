@@ -8,7 +8,6 @@ systemctl stop sing-box
 systemctl disable sing-box
 
 install_dir=/root/sing-box
-mkdir $install_dir
 
 # Remove files
 rm /etc/systemd/system/sing-box.service

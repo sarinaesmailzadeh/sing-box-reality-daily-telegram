@@ -1,6 +1,6 @@
 
 
-install_dir=$install_dir/sing-box
+install_dir=/root/sing-box
 mkdir $install_dir
 
 
