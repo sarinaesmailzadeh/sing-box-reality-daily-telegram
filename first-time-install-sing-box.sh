@@ -1,21 +1,23 @@
-#!/bin/bash
 
+
+install_dir=$install_dir/sing-box
+mkdir $install_dir
 
 
 #easy install
 
-cd /root
-rm -rf /root/reinstall-sing-box.sh*
-rm -rf /root/make-subscribe.sh*
+cd $install_dir
+rm -rf $install_dir/reinstall-sing-box.sh*
+rm -rf $install_dir/make-subscribe.sh*
 
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/reinstall-sing-box.sh
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/make-subscribe.sh
 
-sudo chmod +x /root/reinstall-sing-box.sh
-sudo chmod +x /root/make-subscribe.sh
+sudo chmod +x $install_dir/reinstall-sing-box.sh
+sudo chmod +x $install_dir/make-subscribe.sh
 
 
-rm -rf /root/sing-box-telegram*
+rm -rf $install_dir/sing-box-telegram*
 wget https://github.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/releases/download/v.1.1.0/sing-box-telegram
 sudo chmod +x ./sing-box-telegram
 
@@ -47,7 +49,7 @@ cat /etc/timezone
 
 
 # Check if reality.json, sing-box, and sing-box.service already exist
-if [ -f "/root/reality.json" ] && [ -f "/root/sing-box" ] && [ -f "/etc/systemd/system/sing-box.service" ]; then
+if [ -f "$install_dir/reality.json" ] && [ -f "$install_dir/sing-box" ] && [ -f "/etc/systemd/system/sing-box.service" ]; then
 
     echo "Reality files already exist."
     echo ""
@@ -65,11 +67,11 @@ if [ -f "/root/reality.json" ] && [ -f "/root/sing-box" ] && [ -f "/etc/systemd/
             systemctl stop sing-box
             systemctl disable sing-box
             rm /etc/systemd/system/sing-box.service
-            rm /root/reality.json
-            rm /root/sing-box
-            rm /root/subscribe.txt
-            rm /root/public_key.txt
-            rm /root/sing-box-telegram
+            rm $install_dir/reality.json
+            rm $install_dir/sing-box
+            rm $install_dir/subscribe.txt
+            rm $install_dir/public_key.txt
+            rm $install_dir/sing-box-telegram
 
 
             # Proceed with installation
@@ -82,17 +84,17 @@ if [ -f "/root/reality.json" ] && [ -f "/root/sing-box" ] && [ -f "/etc/systemd/
 
             # Remove files
             rm /etc/systemd/system/sing-box.service
-            rm /root/reality.json
-            rm /root/sing-box
-            rm /root/subscribe.*
+            rm $install_dir/reality.json
+            rm $install_dir/sing-box
+            rm $install_dir/subscribe.*
             rm -rf /var/www/hml/subscribe.*
-            rm /root/public_key.txt
-            rm /root/sing-box-telegram
-            rm /root/first-time-install-sing-box.sh
-            rm /root/reinstall-sing-box.sh
-            rm /root/make-subscribe.sh
+            rm $install_dir/public_key.txt
+            rm $install_dir/sing-box-telegram
+            rm $install_dir/first-time-install-sing-box.sh
+            rm $install_dir/reinstall-sing-box.sh
+            rm $install_dir/make-subscribe.sh
 
-            echo "if you want to delete setting.json, please run rm /root/setting.json"
+            echo "if you want to delete setting.json, please run rm $install_dir/setting.json"
 
 
 	    echo "DONE!"
@@ -134,23 +136,23 @@ esac
 package_name="sing-box-${latest_version}-linux-${arch}"
 
 # Download the latest release package (.tar.gz) from GitHub
-curl -sLo "/root/${package_name}.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${latest_version}/${package_name}.tar.gz"
+curl -sLo "$install_dir/${package_name}.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${latest_version}/${package_name}.tar.gz"
 
-# Extract the package and move the binary to /root
-tar -xzf "/root/${package_name}.tar.gz" -C /root
-mv "/root/${package_name}/sing-box" /root/
+# Extract the package and move the binary to $install_dir
+tar -xzf "$install_dir/${package_name}.tar.gz" -C $install_dir
+mv "$install_dir/${package_name}/sing-box" $install_dir/
 
 # Cleanup the package
-rm -r "/root/${package_name}.tar.gz" "/root/${package_name}"
+rm -r "$install_dir/${package_name}.tar.gz" "$install_dir/${package_name}"
 
 # Set the permissions
-chown root:root /root/sing-box
-chmod +x /root/sing-box
+chown root:root $install_dir/sing-box
+chmod +x $install_dir/sing-box
 
 
 # Generate key pair
 echo "Generating key pair..."
-key_pair=$(/root/sing-box generate reality-keypair)
+key_pair=$($install_dir/sing-box generate reality-keypair)
 echo "Key pair generation complete."
 echo
 
@@ -159,8 +161,8 @@ private_key=$(echo "$key_pair" | awk '/PrivateKey/ {print $2}' | tr -d '"')
 public_key=$(echo "$key_pair" | awk '/PublicKey/ {print $2}' | tr -d '"')
 
 # Generate necessary values
-uuid=$(/root/sing-box generate uuid)
-short_id=$(/root/sing-box generate rand --hex 8)
+uuid=$($install_dir/sing-box generate uuid)
+short_id=$($install_dir/sing-box generate rand --hex 8)
 
 
 listen_port=443
@@ -216,7 +218,7 @@ jq -n --arg listen_port "$listen_port" --arg server_name "$server_name" --arg pr
         "tag": "block"
       }
  ],
-}' > /root/reality.json
+}' > $install_dir/reality.json
 
 # Create sing-box.service
 cat > /etc/systemd/system/sing-box.service <<EOF
@@ -225,10 +227,10 @@ After=network.target nss-lookup.target
 
 [Service]
 User=root
-WorkingDirectory=/root
+WorkingDirectory=$install_dir
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/sing-box run -c /root/reality.json
+ExecStart=$install_dir/sing-box run -c $install_dir/reality.json
 ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 RestartSec=10
@@ -240,12 +242,12 @@ WantedBy=multi-user.target
 EOF
 
 #store public key in a file
-touch /root/public_key.txt
-echo $public_key > /root/public_key.txt
+touch $install_dir/public_key.txt
+echo $public_key > $install_dir/public_key.txt
 
 
 # Check configuration and start the service
-if /root/sing-box check -c /root/reality.json; then
+if $install_dir/sing-box check -c $install_dir/reality.json; then
     echo "Configuration checked successfully. Starting sing-box service..."
     systemctl daemon-reload
     systemctl enable sing-box
@@ -271,8 +273,8 @@ if /root/sing-box check -c /root/reality.json; then
     echo ""
     echo "$server_link"
 
-    touch /root/subscribe.txt
-    echo $server_link > /root/subscribe.txt
+    touch $install_dir/subscribe.txt
+    echo $server_link > $install_dir/subscribe.txt
 
 
 
@@ -285,11 +287,11 @@ if /root/sing-box check -c /root/reality.json; then
     git clone https://github.com/codingstella/vCard-personal-portfolio.git
     cp -ar ./vCard-personal-portfolio/*  /var/www/html/
     rm -rf ./vCard-personal-portfolio/
-    cp /root/subscribe.txt /var/www/html/subscribe.txt 
+    cp $install_dir/subscribe.txt /var/www/html/subscribe.txt 
 
 
     # Install cron job 
-    croncmd="/root/sing-box-telegram > /root/cronjob.log 2>&1"
+    croncmd="$install_dir/sing-box-telegram > $install_dir/cronjob.log 2>&1"
     cronjob="0 13 * * * $croncmd"
     ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
