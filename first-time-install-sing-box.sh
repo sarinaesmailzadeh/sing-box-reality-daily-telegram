@@ -33,6 +33,7 @@ apt-get install speedtest-cli
 apt-get install net-tools
 apt-get install git
 apt-get install cron
+apt-get install curl tar unzip jq -y
 apt-get install -y jq
 
 journalctl --vacuum-time=1d
