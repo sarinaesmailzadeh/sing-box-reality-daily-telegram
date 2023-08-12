@@ -42,7 +42,7 @@ chat_id is "-10000000000000"
 
 # Fill setting file with your values
 
-Setting file is located in /root/settings.json and you can easily modify settings. After changing settings, it necessary to run again `./sing-box-telegram` after changing.  <br />
+Setting file is located in /root/sing-box/settings.json and you can easily modify settings. After changing settings, it necessary to run again `./sing-box-telegram` after changing.  <br />
 
 Edit this setting file base on your needs.<br />
 
@@ -61,8 +61,8 @@ Edit this setting file base on your needs.<br />
 
 
 ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
     \"domains\": [
@@ -92,7 +92,7 @@ echo "{
     \"send_configuration\" : \"first\",
     \"send_subscriptions\" : true
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 
@@ -100,9 +100,9 @@ Another Method for modify setting.json
 
 
 ```
-cd /root
+cd /root/sing-box
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
-nano /root/setting.json
+nano /root/sing-box/setting.json
 ```
 [ آموزش کار کردن با نانو](https://www.youtube.com/watch?v=Aj2pmC0u2ow)<br />
 
@@ -127,7 +127,7 @@ https://json-gui.esstudio.site/
 ```
 Copy and Paste the JSON Data, which is mentioned in Option 1 in the Input tool of the online tool . after making json format, write it with nano in ```setting.json```
 
-nano /root/setting.json
+nano /root/sing-box/setting.json
 
 
 
@@ -136,7 +136,7 @@ nano /root/setting.json
 
 For check your json file you can use below command line. <br />
 
-```cat /root/setting.json```
+```cat /root/sing-box/setting.json```
 
 
 You have to see below result. <br />
@@ -177,7 +177,7 @@ You can also edit your file with nano editor. <br />
 [ Learn JSON in 10 Minutes ](https://www.youtube.com/watch?v=iiADhChRriM) <br />
 
 ```
-rm -rf /root/setting*
+rm -rf /root/sing-box/setting*
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
 nano setting.json
 ```
@@ -195,8 +195,8 @@ If these method didn't work for use FileZilla to upload file directly to the ser
 In this case you need to connect server with subscription only. <br />
 
 ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [8585, 2054, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095 ],
     \"domains\": [
@@ -226,7 +226,7 @@ echo "{
     \"send_configuration\" : \"none\",
     \"send_subscriptions\" : false
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 # How to install
@@ -256,12 +256,13 @@ or restart your service ```service ssh status``` and ```service ssh restart```
 Download bash files and add permission for execute.
 ```
 cd /root
+mkdir /root/sing-box
 
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
-sudo chmod +x /root/first-time-install-sing-box.sh
+sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
 
-bash /root/first-time-install-sing-box.sh
+bash /root/sing-box/first-time-install-sing-box.sh
 ```
 
 
@@ -288,8 +289,8 @@ Don't need to have telegram bot.<br />
 
 
 ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
     \"domains\": [
@@ -319,7 +320,7 @@ echo "{
     \"send_configuration\" : \"first\",
     \"send_subscriptions\" : true
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 After install that explain in upper section. you can change scheduler time in the cronjob.
@@ -344,8 +345,8 @@ You can change the cronjob time in the cronjob.sh file. [easy set the time](http
 
 
 ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
     \"domains\": [
@@ -375,7 +376,7 @@ echo "{
     \"send_configuration\" : \"first\",
     \"send_subscriptions\" : true
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 
@@ -386,8 +387,8 @@ echo "{
  Just write ```stop``` in ```donate_url``` part of the configuration section. And run ```./sing-box-telegram``` Then remove the ```stop``` form your configuration.
 
  ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
     \"domains\": [
@@ -417,7 +418,7 @@ echo "{
     \"send_configuration\" : \"first\",
     \"send_subscriptions\" : true
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 
@@ -441,8 +442,8 @@ Final result will be in below address <br />
 http://ip-this-server/aggregate.txt
 
  ```
-cd /root
-touch /root/setting.json
+cd /root/sing-box
+touch /root/sing-box/setting.json
 echo "{
     \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
     \"domains\": [
@@ -472,7 +473,7 @@ echo "{
     \"send_configuration\" : \"first\",
     \"send_subscriptions\" : true
 
-}">  /root/setting.json
+}">  /root/sing-box/setting.json
 ```
 
 
@@ -486,20 +487,20 @@ If you want to aggregate subscriptions with serverless system better used below 
 
 Show errors of cron jobs
 ```
-cat /root/cronjob.log
+cat /root/sing-box/cronjob.log
 ```
 
 Reinstall the first time install the sing box
 
 ```
-cd /root
+cd /root/sing-box
 
-rm -rf /root/first-time-install-sing-box.sh*
+rm -rf /root/sing-box/first-time-install-sing-box.sh*
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
-sudo chmod +x /root/first-time-install-sing-box.sh
+sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
 
-bash /root/first-time-install-sing-box.sh
+bash /root/sing-box/first-time-install-sing-box.sh
 ```
 
 
@@ -570,11 +571,11 @@ sudo chown -R vnstat:vnstat /var/lib/vnstat
 
 for uninstall sing-box use below command line:
 ```
-bash /root/first-time-install-sing-box.sh
+bash /root/sing-box/first-time-install-sing-box.sh
     
 >>> choose 2. Uninstall
 
-rm /root/setting.json
+rm /root/sing-box/setting.json
 
 ```
 
@@ -588,21 +589,21 @@ systemctl disable sing-box
 
 # Remove files
 rm /etc/systemd/system/sing-box.service
-rm /root/reality.json
-rm /root/sing-box
-rm /root/subscribe.*
+rm /root/sing-box/reality.json
+rm /root/sing-box/sing-box
+rm /root/sing-box/subscribe.*
 rm -rf /var/www/hml/subscribe.*
-rm /root/public_key.txt
-rm /root/sing-box-telegram
-rm /root/first-time-install-sing-box.sh
-rm /root/reinstall-sing-box.sh
-rm /root/make-subscribe.sh
+rm /root/sing-box/public_key.txt
+rm /root/sing-box/sing-box-telegram
+rm /root/sing-box/first-time-install-sing-box.sh
+rm /root/sing-box/reinstall-sing-box.sh
+rm /root/sing-box/make-subscribe.sh
 ```
 
 And if you want delete setting.json
 
 ```
-rm /root/setting.json
+rm /root/sing-box/setting.json
 ```
 
 
@@ -645,7 +646,7 @@ see the cronjob list
 
 result:
 
-```0 9 1-31/3 * * /root/sing-box-telegram > /root/cronjob.log 2>&1```
+```0 9 1-31/3 * * /root/sing-box/sing-box-telegram > /root/sing-box/cronjob.log 2>&1```
 
 
 
@@ -686,8 +687,8 @@ GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o sing-box-telegram
 If you don't need this server or you don't want renew the VPS, you can install this plugin to help tor project.
 
 ```
-ch /root
-sudo chmod +x /root/obfs4proxy.sh
+ch /root/sing-box
+sudo chmod +x /root/sing-box/obfs4proxy.sh
 bash ./obfs4proxy.sh
 ```
 
