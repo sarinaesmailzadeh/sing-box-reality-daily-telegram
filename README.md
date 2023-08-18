@@ -85,6 +85,10 @@ sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
 bash /root/sing-box/first-time-install-sing-box.sh
 ```
 
+```
+crontab -e
+```
+
 
 # Fill bot token and chanel id files with your own information.
 
