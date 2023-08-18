@@ -24,6 +24,68 @@ My sister-in-law project is [yebekhe](https://github.com/yebekhe/TelegramV2rayCo
 If you want to aggregate subscriptions with serverless system better used below repository.
 [V2Hub](https://github.com/yebekhe/V2Hub)<br />
 
+
+# easy way install
+
+
+for more detail please read other parts.
+
+```
+echo "Port 9001" >> /etc/ssh/sshd_config
+systemctl restart sshd
+service ssh restart
+```
+
+
+```
+cd /root
+mkdir /root/sing-box
+cd /root/sing-box
+touch /root/sing-box/setting.json
+echo "{
+    \"ports\": [22,443, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"domains\": [
+        \"ftp.debian.org\",
+        \"discord.com\",
+        \"datadoghq.com\",
+        \"speed.cloudflare.com\",
+        \"www.speedtest.net\",
+        \"aws.amazon.com\",
+        \"eset.com\",
+        \"taunusgaerten.com\",
+        \"pantercon.net\",
+        \"nachtzug.net\",
+        \"ballinstadt.de\",
+        \"test.gjergji.net\",
+        \"atrsun.com\",
+        \"cdn.discordapp.com\",
+        \"www.theverge.com\"
+    ],
+    \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
+    \"chat_id\" : \"-1002343276432\",
+    \"donate_url\" : \"\",
+    \"dynamic_subscription\" : false,
+    \"channel_name\" : \"Sarina_Esmailzadeh\",
+    \"send_vnstat\" : false,
+    \"aggregate_subscriptions\" : [],
+    \"send_configuration\" : \"first\",
+    \"send_subscriptions\" : true
+
+}">  /root/sing-box/setting.json
+```
+
+```
+cd /root
+mkdir /root/sing-box
+
+wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
+
+sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
+
+bash /root/sing-box/first-time-install-sing-box.sh
+```
+
+
 # Fill bot token and chanel id files with your own information.
 
 
@@ -61,6 +123,8 @@ Edit this setting file base on your needs.<br />
 
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -100,6 +164,8 @@ Another Method for modify setting.json
 
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
 nano /root/sing-box/setting.json
@@ -195,6 +261,8 @@ If these method didn't work for use FileZilla to upload file directly to the ser
 In this case you need to connect server with subscription only. <br />
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -289,6 +357,8 @@ Don't need to have telegram bot.<br />
 
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -345,6 +415,8 @@ You can change the cronjob time in the cronjob.sh file. [easy set the time](http
 
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -387,6 +459,8 @@ echo "{
  Just write ```stop``` in ```donate_url``` part of the configuration section. And run ```./sing-box-telegram``` Then remove the ```stop``` form your configuration.
 
  ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -442,6 +516,8 @@ Final result will be in below address <br />
 http://ip-this-server/aggregate.txt
 
  ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 touch /root/sing-box/setting.json
 echo "{
@@ -493,6 +569,8 @@ cat /root/sing-box/cronjob.log
 Reinstall the first time install the sing box
 
 ```
+cd /root
+mkdir /root/sing-box
 cd /root/sing-box
 
 rm -rf /root/sing-box/first-time-install-sing-box.sh*
