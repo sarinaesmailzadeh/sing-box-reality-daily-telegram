@@ -37,7 +37,7 @@ service ssh restart
 ```
 
 
-‍‍‍```
+```
 cd /root
 mkdir /root/sing-box
 cd /root/sing-box
