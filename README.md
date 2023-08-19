@@ -37,10 +37,14 @@ service ssh restart
 ```
 
 
-```
+‍‍‍```
 cd /root
 mkdir /root/sing-box
 cd /root/sing-box
+```
+
+
+```
 touch /root/sing-box/setting.json
 echo "{
     \"ports\": [22,443, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
@@ -75,9 +79,6 @@ echo "{
 ```
 
 ```
-cd /root
-mkdir /root/sing-box
-
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
 sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
