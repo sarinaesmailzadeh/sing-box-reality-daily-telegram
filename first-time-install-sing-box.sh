@@ -291,7 +291,7 @@ if $install_dir/sing-box check -c $install_dir/reality.json; then
 
 
     # Install cron job 
-    croncmd="$install_dir/sing-box-telegram > $install_dir/cronjob.log 2>&1"
+    croncmd="cd $install_dir && $install_dir/sing-box-telegram > $install_dir/cronjob.log 2>&1"
     cronjob="0 13 * * * $croncmd"
     ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
