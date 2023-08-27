@@ -30,6 +30,9 @@ If you want to aggregate subscriptions with serverless system better used below 
 
 for more detail please read other parts.
 
+** please run these command one by one. </br>
+I am extremely recommend to change port 22 into another port. 
+**
 ```
 echo "Port 9001" >> /etc/ssh/sshd_config
 systemctl restart sshd
@@ -43,6 +46,7 @@ mkdir /root/sing-box
 cd /root/sing-box
 ```
 
+** please, if you don't change ssh port, change port 22 to another port. **
 
 ```
 touch /root/sing-box/setting.json
@@ -78,6 +82,8 @@ echo "{
 }">  /root/sing-box/setting.json
 ```
 
+** please run these command one by one. **
+
 ```
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
 
@@ -86,8 +92,17 @@ sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
 bash /root/sing-box/first-time-install-sing-box.sh
 ```
 
+after change the cronjob time, you need to save it. [easy set the time](https://crontab.guru/)
+
 ```
 crontab -e
+```
+
+Run the command.
+
+```
+cd /root/sing-box
+./sing-box-telegram
 ```
 
 
