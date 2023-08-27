@@ -30,9 +30,9 @@ If you want to aggregate subscriptions with serverless system better used below 
 
 for more detail please read other parts.
 
-** please run these command one by one. </br>
-I am extremely recommend to change port 22 into another port. 
-**
+* <b> please run these command one by one. </b> </br>
+* <b> I am extremely recommend to change port 22 into another port.</b> 
+
 ```
 echo "Port 9001" >> /etc/ssh/sshd_config
 systemctl restart sshd
@@ -46,7 +46,7 @@ mkdir /root/sing-box
 cd /root/sing-box
 ```
 
-** please, if you don't change ssh port, change port 22 to another port. **
+* <b> please, if you don't change ssh port, change port 22 to another port. </b>
 
 ```
 touch /root/sing-box/setting.json
@@ -82,7 +82,7 @@ echo "{
 }">  /root/sing-box/setting.json
 ```
 
-** please run these command one by one. **
+* <b>please run these command one by one. </b>
 
 ```
 wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
