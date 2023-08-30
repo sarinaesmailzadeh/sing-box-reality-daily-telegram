@@ -1,28 +1,9 @@
-# Sing Box Reality Daily Telegram
-Sing box Reality with send configuration in the telegram channel every day.This project send sing box Reality configuration to your channel base on schedule.<br />
+# Xray Reality Daily Telegram
+Xray Reality with send configuration in the telegram channel every day.This project send Xray Reality configuration to your channel base on schedule.<br />
 Also you can donate your configuration to Yebekhe Systems.
 
 # Supported Version
 Ubuntu 22.04
-
-# Persian Articles
-
-[Youtube video was made by AliAlma_GSM](https://www.youtube.com/watch?v=shZnK6Kn4qk)<br />
-[Easy Installation](https://telegra.ph/process-of-install-sing-box-daily-telegram-07-08)<br />
-[A to Z make a Sing-box VPN for all members of the family](https://telegra.ph/A-to-Z-make-a-Sing-box-VPN-for-all-members-of-the-family-06-01)<br />
-[Explain sb-server-configer](https://telegra.ph/Small-family-servers-05-17)<br />
-[Explain Sing-box](https://telegra.ph/How-run-Reality-protocol-with-Xray-or-Sing-box-Core-with-iSegaro-04-18)<br />
-
-# Copywriting
-This project is fork of [sing-REALITY-box](https://github.com/deathline94/sing-REALITY-Box).<br />
-The main Idea is combine [sb-server-configer](https://github.com/hrostami/sb-server-configer) with bash script.<br />
-It means that implement outstanding feature ```sb-server-configer``` with bash script. These feature added into the [reality-ezpz](https://github.com/aleskxyz/reality-ezpz).<br />
-
-iSegaro sing-box Reality configuration [sing-box](https://raw.githubusercontent.com/iSegaro/Sing-Box/main/sing-box_config.json)<br />
-iSegaro sing-box GRPC Reality configuration [sing-box](https://github.com/iSegaro/Sing-Box/blob/main/sing-box_config_GRPC.json)<br />
-My sister-in-law project is [yebekhe](https://github.com/yebekhe/TelegramV2rayCollector). This project gathering configuration from the telegram channel<br />
-If you want to aggregate subscriptions with serverless system better used below repository.
-[V2Hub](https://github.com/yebekhe/V2Hub)<br />
 
 
 # easy way install
@@ -586,7 +567,7 @@ Show errors of cron jobs
 cat /root/sing-box/cronjob.log
 ```
 
-Reinstall the first time install the sing box
+Reinstall the first time install the Xray
 
 ```
 cd /root
@@ -602,7 +583,7 @@ bash /root/sing-box/first-time-install-sing-box.sh
 ```
 
 
-Check sing box version
+Check Xray version
 ```
 ./sing-box version
 ```
@@ -611,11 +592,11 @@ Check sing box version
 Check status of sing-box 
 ```systemctl status sing-box```
 
-Restart Sing box service 
+Restart Xray service 
 ```systemctl restart sing-box```
 
 
-Check logs of sing box
+Check logs of Xray
 ```
 journalctl -u sing-box.service
 systemctl status sing-box
@@ -777,16 +758,7 @@ And Also you can use ```http://ip ``` for fake html.
 
 for build go file use below command line:
 ```
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o sing-box-telegram
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o xray-telegram
 ```
 
-
-# Install Obfs4proxy plugin (Use only your ip address is blocked by Iranian or chinese GFW)
-If you don't need this server or you don't want renew the VPS, you can install this plugin to help tor project.
-
-```
-ch /root/sing-box
-sudo chmod +x /root/sing-box/obfs4proxy.sh
-bash ./obfs4proxy.sh
-```
 

@@ -11,7 +11,7 @@ import (
 func main() {
 
 	fmt.Println("restarting...")
-	//Reinstall sing box
+	//Reinstall Xray
 	_, err := exec.Command("/bin/sh", "./reinstall-sing-box.sh").Output()
 	if err != nil {
 		fmt.Printf("error make-subscribe %s", err)
