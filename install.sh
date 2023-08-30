@@ -44,7 +44,7 @@ echo $key_pair
 
 #store public key in a file
 touch $install_dir/key_pair.txt
-echo $public_key > $install_dir/key_pair.txt
+echo $key_pair > $install_dir/key_pair.txt
 
 
 # Create xray.service
@@ -76,7 +76,6 @@ cd /var/www/html/
 git clone https://github.com/codingstella/vCard-personal-portfolio.git
 cp -ar ./vCard-personal-portfolio/*  /var/www/html/
 rm -rf ./vCard-personal-portfolio/
-cp $install_dir/subscribe.txt /var/www/html/subscribe.txt 
 
 
 # Install cron job 

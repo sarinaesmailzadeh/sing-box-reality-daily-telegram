@@ -589,11 +589,11 @@ Check Xray version
 ```
 
 
-Check status of sing-box 
-```systemctl status sing-box```
+Check status of xray 
+```systemctl status xray```
 
 Restart Xray service 
-```systemctl restart sing-box```
+```systemctl restart xray```
 
 
 Check logs of Xray
