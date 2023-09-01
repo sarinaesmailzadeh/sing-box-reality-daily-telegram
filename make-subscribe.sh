@@ -1,6 +1,6 @@
 #!/bin/bash
 
-install_dir=/root/sing-box
+install_dir=/root/xray-configuration
 
 
 rm -rf /var/www/html/subscribe.*
@@ -10,5 +10,5 @@ cp  $install_dir/subscribe.* /var/www/html/
 rm -rf /var/www/html/aggregate.*
 cp  $install_dir/aggregate.* /var/www/html/
 
-# Restart sing-box service
-systemctl restart sing-box
+# Restart xray service
+systemctl restart xray

@@ -12,9 +12,9 @@ func main() {
 
 	fmt.Println("restarting...")
 	//Reinstall Xray
-	_, err := exec.Command("/bin/sh", "./reinstall-sing-box.sh").Output()
+	_, err := exec.Command("/bin/sh", "./reinstall.sh").Output()
 	if err != nil {
-		fmt.Printf("error make-subscribe %s", err)
+		fmt.Printf("error reinstall %s", err)
 	}
 
 	fmt.Println("read setting file...")

@@ -68,6 +68,10 @@ StandardOutput=null
 WantedBy=multi-user.target
 EOF
 
+systemctl daemon-reload
+systemctl enable xray
+systemctl start xray
+systemctl restart xray
 
 # Install apache2 and clone the website
 apt-get install apache2

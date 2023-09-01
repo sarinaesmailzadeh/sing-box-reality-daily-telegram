@@ -2,27 +2,11 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"strings"
 )
-
-func ReadRealityFile() (currentReality RealityJson) {
-
-	// Let's first read the `reality.json` file
-	content, err := os.ReadFile("./reality.json")
-	if err != nil {
-		log.Fatal("Error when opening file: ", err)
-	}
-
-	// Now let's unmarshal the data into `currentReality`
-	err = json.Unmarshal(content, &currentReality)
-	if err != nil {
-		log.Fatal("Error during Unmarshal(): ", err)
-	}
-
-	return currentReality
-}
 
 func WriteFile(filename string, newReality RealityJson) error {
 
@@ -41,14 +25,22 @@ func WriteFile(filename string, newReality RealityJson) error {
 	return nil
 }
 
-func getPublicKey() string {
-	dat, err := os.ReadFile("./public_key.txt")
+func getPublicKeyAndPrivateKey() (privateKey string, publicKey string) {
+	dat, err := os.ReadFile("./key_pair.txt")
 	if err != nil {
 		log.Fatal("error during the ReadFile")
 	}
-	publicKey := string(dat)
+	allData := string(dat)
 
-	publicKey = strings.TrimSpace(publicKey)
+	allData = strings.TrimSpace(allData)
 
-	return publicKey
+	privateKey = strings.TrimLeft(strings.TrimRight(allData, " Public key: "), "Private key: ")
+	pubAns := strings.SplitAfter(allData, " Public key: ")
+
+	fmt.Println("_____________________________")
+	fmt.Println("Public_key:", pubAns[0])
+	fmt.Println("Private_key:", privateKey)
+	fmt.Println("_____________________________")
+
+	return privateKey, pubAns[0]
 }

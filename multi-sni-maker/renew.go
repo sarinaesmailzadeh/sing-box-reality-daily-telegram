@@ -12,46 +12,42 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 	outReality RealityJson,
 	SliceConfigAll []string) {
 
-	publicKey := getPublicKey()
-
-	currentReality := ReadRealityFile()
-	currentInbound := currentReality.Inbounds[0]
-
-	newReality.Outbounds = currentReality.Outbounds
+	privateKey, publicKey := getPublicKeyAndPrivateKey()
 
 	newReality.Inbounds = make([]Inbound, len(setting.Domains))
 
+	shortID := GenerateRandomString(16)
+
 	for counter := 0; counter < len(setting.Domains); counter++ {
 
-		inbound := currentInbound
-		inbound.ListenPort = setting.Ports[counter]
-		inbound.TLS.ServerName = setting.Domains[counter]
-		inbound.TLS.Reality.Handshake.Server = setting.Domains[counter]
+		var inbound Inbound
+		inbound.Listen = "0.0.0.0"
+		inbound.Port = setting.Ports[counter]
+		inbound.Protocol = "vless"
+		inbound.Settings.Clients = make([]Client, 1)
+		inbound.Settings.Clients[0].Flow = ""
+		inbound.Settings.Clients[0].ID = uuid.New().String()
+		inbound.Settings.Decryption = "none"
+		inbound.StreamSettings.Network = "tcp"
+		inbound.StreamSettings.Security = "reality"
+		inbound.StreamSettings.RealitySettings.Show = false
+		inbound.StreamSettings.RealitySettings.Dest = setting.Domains[counter] + ":" + strconv.Itoa(setting.Ports[counter])
+		inbound.StreamSettings.RealitySettings.Xver = 0
+		inbound.StreamSettings.RealitySettings.ServerNames = []string{setting.Domains[counter]}
+		inbound.StreamSettings.RealitySettings.PrivateKey = privateKey
+		inbound.StreamSettings.RealitySettings.MinClientVer = ""
+		inbound.StreamSettings.RealitySettings.MaxClientVer = ""
+		inbound.StreamSettings.RealitySettings.MaxTimeDiff = 0
+		inbound.StreamSettings.RealitySettings.ShortIds = []string{shortID}
+		inbound.StreamSettings.RealitySettings.SpiderX = "/doggo"
 
 		name := setting.ChannelName + "-" + setting.Domains[counter]
-		inbound.Users = []User{
-			{
-				Name: name,
-				UUID: uuid.New().String(),
-				Flow: "xtls-rprx-vision",
-			},
-		}
-
 		newReality.Inbounds[counter] = inbound
 
 		//GRPC setting
-		// if setting.GRPC[counter] {
-
-		// 	inbound.Users[0].Flow = ""
-		// 	inbound.Users[0].Name = ""
-
-		// 	newReality.Inbounds[counter].Transport = new(Transport)
-		// 	newReality.Inbounds[counter].Transport.Type = "grpc"
-		// 	newReality.Inbounds[counter].Transport.ServiceName = name
-		// 	newReality.Inbounds[counter].Transport.IdleTimeout = "15s"
-		// 	newReality.Inbounds[counter].Transport.PingTimeout = "15s"
-		// 	newReality.Inbounds[counter].Transport.PermitWithoutStream = false
-		// }
+		if setting.GRPC[counter] {
+			inbound.StreamSettings.Network = "grpc"
+		}
 
 		//capture setting
 

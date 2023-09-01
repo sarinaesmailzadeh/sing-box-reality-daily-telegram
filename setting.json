@@ -1,21 +1,8 @@
 {
-    "ports": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    "ports": [443,  2087 ],
     "domains": [
          "ftp.debian.org",
-         "discord.com",
-         "datadoghq.com",
-         "speed.cloudflare.com",
-         "www.speedtest.net",
-         "aws.amazon.com",
-         "eset.com",
-         "taunusgaerten.com",
-         "pantercon.net",
-         "nachtzug.net",
-         "ballinstadt.de",
-         "test.gjergji.net",
-         "atrsun.com",
-         "cdn.discordapp.com",
-         "www.theverge.com"
+         "discord.com"
     ],
     "bot_token" : "627442321431:bga9g_13IQBuAcDb3DSemBceracA-KDFS3b",
     "chat_id" : "-1003385273232",
@@ -25,5 +12,6 @@
     "send_vnstat" : true,
     "aggregate_subscriptions" : [],
     "send_configuration" : "all",
-    "send_subscriptions" : true
+    "send_subscriptions" : true, 
+    "grpc" : ["true", "false"]
  }
