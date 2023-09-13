@@ -16,7 +16,7 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 
 	newReality.Inbounds = make([]Inbound, len(setting.Domains))
 
-	shortID := GenerateRandomString(16)
+	shortID := GenerateRandomString(4)
 
 	for counter := 0; counter < len(setting.Domains); counter++ {
 
@@ -31,7 +31,7 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 		inbound.StreamSettings.Network = "tcp"
 		inbound.StreamSettings.Security = "reality"
 		inbound.StreamSettings.RealitySettings.Show = false
-		inbound.StreamSettings.RealitySettings.Dest = setting.Domains[counter] + ":" + strconv.Itoa(setting.Ports[counter])
+		inbound.StreamSettings.RealitySettings.Dest = setting.Domains[counter] + ":443"
 		inbound.StreamSettings.RealitySettings.Xver = 0
 		inbound.StreamSettings.RealitySettings.ServerNames = []string{setting.Domains[counter]}
 		inbound.StreamSettings.RealitySettings.PrivateKey = privateKey

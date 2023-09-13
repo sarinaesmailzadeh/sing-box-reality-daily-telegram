@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/hex"
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -14,5 +16,8 @@ func GenerateRandomString(length int) string {
 	for i := range b {
 		b[i] = charset[seededRand.Intn(len(charset))]
 	}
-	return string(b)
+	result := string(hex.EncodeToString(b))
+	fmt.Println("*************")
+	fmt.Println(result) //"e97a333fee31c8d0"
+	return result
 }

@@ -17,10 +17,14 @@ func Block(newReality RealityJson) RealityJson {
 		OutboundTag: "block",
 	}
 
-	newReality.Outbounds = make([]Outbound, 1)
+	newReality.Outbounds = make([]Outbound, 2)
 	newReality.Outbounds[0] = Outbound{
 		Tag:      "direct",
 		Protocol: "freedom",
+	}
+	newReality.Outbounds[1] = Outbound{
+		Tag:      "block",
+		Protocol: "blackhole",
 	}
 
 	return newReality
