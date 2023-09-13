@@ -33,14 +33,26 @@ func getPublicKeyAndPrivateKey() (privateKey string, publicKey string) {
 	allData := string(dat)
 
 	allData = strings.TrimSpace(allData)
+	allData = strings.ReplaceAll(allData, " ", "")
 
-	privateKey = strings.TrimLeft(strings.TrimRight(allData, " Public key: "), "Private key: ")
-	pubAns := strings.SplitAfter(allData, " Public key: ")
+	privateKeyFirst := RemoveRightPart(allData, "Publickey:")
+	privateKey = RemoveLeftPart(privateKeyFirst, "Privatekey:")
+
+	pubAns := strings.SplitAfter(allData, "Publickey:")
+	publicKey = pubAns[1]
 
 	fmt.Println("_____________________________")
-	fmt.Println("Public_key:", pubAns[0])
-	fmt.Println("Private_key:", privateKey)
+	fmt.Println("Private_key=>", privateKey)
+	fmt.Println("Public_key=>", publicKey)
 	fmt.Println("_____________________________")
 
-	return privateKey, pubAns[0]
+	return privateKey, publicKey
+}
+
+func RemoveRightPart(str, substring string) string {
+	return str[:strings.Index(str, substring)]
+}
+
+func RemoveLeftPart(str, substring string) string {
+	return str[strings.Index(str, substring)+len(substring):]
 }

@@ -5,7 +5,7 @@ apt update
 echo "Uninstalling..."
 # Stop and disable xray service
 systemctl stop xray
-systemctl disable xray
+systemctl disable xray 
 
 install_dir=/root/xray-configuration
 
@@ -46,6 +46,27 @@ touch $install_dir/key_pair.txt
 echo $key_pair > $install_dir/key_pair.txt
 
 
+
+# Create xray.service
+cat > /etc/systemd/system/xray.service <<EOF
+[Unit]
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+WorkingDirectory=$install_dir
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=$install_dir/xray run -c $install_dir/reality.json
+ExecReload=/bin/kill -HUP \$MAINPID
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=infinity
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
 
 systemctl daemon-reload

@@ -13,5 +13,5 @@
     "aggregate_subscriptions" : [],
     "send_configuration" : "all",
     "send_subscriptions" : true, 
-    "grpc" : ["true", "false"]
+    "grpc" : [true, false]
  }
