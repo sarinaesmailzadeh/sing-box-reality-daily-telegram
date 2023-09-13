@@ -50,10 +50,17 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 		}
 
 		//capture setting
+		headerType := ""
+		if inbound.StreamSettings.Network == "tcp" {
 
-		StringConfig := "vless://" + inbound.Users[0].UUID + "@" + serverIP + ":" + strconv.Itoa(setting.Ports[counter]) +
-			"?encryption=none&flow=xtls-rprx-vision&security=reality&sni=" + setting.Domains[counter] +
-			"&fp=chrome&pbk=" + publicKey + "&sid=" + inbound.TLS.Reality.ShortID[0] + "&type=tcp&headerType=none#" + name
+			headerType = "&headerType=none"
+		} else {
+			headerType = ""
+		}
+
+		StringConfig := "vless://" + inbound.Settings.Clients[0].ID + "@" + serverIP + ":" + strconv.Itoa(setting.Ports[counter]) +
+			"?encryption=none&security=reality&sni=" + setting.Domains[counter] +
+			"&fp=chrome&pbk=" + publicKey + "&sid=" + inbound.StreamSettings.RealitySettings.ShortIds[0] + "&spx=%2Fdoggo&type=" + inbound.StreamSettings.Network + headerType + "#" + name
 
 		if counter == 0 {
 			StringConfigZero = StringConfig

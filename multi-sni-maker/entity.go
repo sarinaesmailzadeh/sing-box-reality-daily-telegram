@@ -7,17 +7,21 @@ type RealityJson struct {
 	Inbounds []Inbound `json:"inbounds"`
 	Routing  struct {
 		DomainStrategy string `json:"domainStrategy"`
-		Rules          []struct {
-			Type        string   `json:"type"`
-			IP          []string `json:"ip,omitempty"`
-			OutboundTag string   `json:"outboundTag"`
-			Domain      []string `json:"domain,omitempty"`
-		} `json:"rules"`
+		Rules          []Rule `json:"rules"`
 	} `json:"routing"`
-	Outbounds []struct {
-		Tag      string `json:"tag"`
-		Protocol string `json:"protocol"`
-	} `json:"outbounds"`
+	Outbounds []Outbound `json:"outbounds"`
+}
+
+type Rule struct {
+	Type        string   `json:"type"`
+	IP          []string `json:"ip,omitempty"`
+	OutboundTag string   `json:"outboundTag"`
+	Domain      []string `json:"domain,omitempty"`
+}
+
+type Outbound struct {
+	Tag      string `json:"tag"`
+	Protocol string `json:"protocol"`
 }
 
 type Inbound struct {
