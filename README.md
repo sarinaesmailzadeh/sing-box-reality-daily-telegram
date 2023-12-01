@@ -67,9 +67,6 @@ echo "{
     17591, 17633, 17684, 18023, 18439,
     18512, 18995, 19215, 19534, 20955,
     22034, 22097, 22242, 22243, 22245],
-
-
-
     \"domains\": [
         \"speed.cloudflare.com\",
         \"aws.amazon.com\",
@@ -150,7 +147,7 @@ echo "{
         \"linuxfoundation.org\",
         \"hacks.mozilla.org\",
         \"docker.com\",
-        \"blogs.windows.com\",
+        \"blogs.windows.com\"
     ],
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
