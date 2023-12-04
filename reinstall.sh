@@ -11,6 +11,7 @@ install_dir=/root/xray-configuration
 
 # Remove files
 rm /etc/systemd/system/xray.service
+rm /etc/systemd/system/xrayconf.service
 rm $install_dir/reality.json
 rm $install_dir/subscribe.*
 rm /var/www/html/subscribe.*
@@ -47,8 +48,8 @@ echo $key_pair > $install_dir/key_pair.txt
 
 
 
-# Create xray.service
-cat > /etc/systemd/system/xray.service <<EOF
+# Create xrayconf.service
+cat > /etc/systemd/system/xrayconf.service <<EOF
 [Unit]
 After=network.target nss-lookup.target
 
@@ -70,6 +71,6 @@ EOF
 
 
 systemctl daemon-reload
-systemctl enable xray
-systemctl start xray
-systemctl restart xray
+systemctl enable xrayconf
+systemctl start xrayconf
+systemctl restart xrayconf

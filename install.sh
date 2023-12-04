@@ -47,8 +47,11 @@ touch $install_dir/key_pair.txt
 echo $key_pair > $install_dir/key_pair.txt
 
 
+touch $install_dir/log.txt
+
+
 # Create xray.service
-cat > /etc/systemd/system/xray.service <<EOF
+cat > /etc/systemd/system/xrayconf.service <<EOF
 [Unit]
 After=network.target nss-lookup.target
 
@@ -69,9 +72,9 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable xray
-systemctl start xray
-systemctl restart xray
+systemctl enable xrayconf
+systemctl start xrayconf
+systemctl restart xrayconf
 
 # Install apache2 and clone the website
 apt-get install apache2
