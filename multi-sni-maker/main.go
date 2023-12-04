@@ -40,7 +40,7 @@ func main() {
 	newReality = Block(newReality)
 
 	//save new Reality in file
-	err = WriteFile("./reality.json", newReality)
+	err = WriteFile("./config.json", newReality)
 	if err != nil {
 		log.Fatal("error during the WriteFile")
 	}

@@ -11,8 +11,7 @@ install_dir=/root/xray-configuration
 
 # Remove files
 rm /etc/systemd/system/xray.service
-rm /etc/systemd/system/xrayconf.service
-rm $install_dir/reality.json
+rm $install_dir/config.json
 rm $install_dir/subscribe.*
 rm /var/www/html/subscribe.*
 
@@ -48,29 +47,11 @@ echo $key_pair > $install_dir/key_pair.txt
 
 
 
-# Create xrayconf.service
-cat > /etc/systemd/system/xrayconf.service <<EOF
-[Unit]
-After=network.target nss-lookup.target
+cp $install_dir/config.json /usr/local/etc/xray/config.json
 
-[Service]
-User=root
-WorkingDirectory=$install_dir
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=xray run -c $install_dir/reality.json
-ExecReload=/bin/kill -HUP \$MAINPID
-Restart=on-failure
-RestartSec=10
-LimitNOFILE=infinity
-StandardOutput=null
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
 
 systemctl daemon-reload
-systemctl enable xrayconf
-systemctl start xrayconf
-systemctl restart xrayconf
+systemctl enable xray
+systemctl start xray
+systemctl restart xray

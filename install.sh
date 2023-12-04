@@ -50,31 +50,14 @@ echo $key_pair > $install_dir/key_pair.txt
 touch $install_dir/log.txt
 
 
-# Create xray.service
-cat > /etc/systemd/system/xrayconf.service <<EOF
-[Unit]
-After=network.target nss-lookup.target
+cp $install_dir/config.json /usr/local/etc/xray/config.json
 
-[Service]
-User=root
-WorkingDirectory=$install_dir
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=xray run -c $install_dir/reality.json
-ExecReload=/bin/kill -HUP \$MAINPID
-Restart=on-failure
-RestartSec=10
-LimitNOFILE=infinity
-StandardOutput=null
 
-[Install]
-WantedBy=multi-user.target
-EOF
 
 systemctl daemon-reload
-systemctl enable xrayconf
-systemctl start xrayconf
-systemctl restart xrayconf
+systemctl enable xray
+systemctl start xray
+systemctl restart xray
 
 # Install apache2 and clone the website
 apt-get install apache2
