@@ -5,7 +5,7 @@ install_dir=/root/xray-configuration
 mkdir $install_dir
 
 
-# wget https://raw.githubusercontent.com/majidrezarahnavard/xray-configuration/main/reality.json
+# wget https://raw.githubusercontent.com/majidrezarahnavard/xray-configuration/main/config.json
 
 
 #instal monitoring
@@ -49,15 +49,10 @@ echo $key_pair > $install_dir/key_pair.txt
 
 touch $install_dir/log.txt
 
-
+#TODO Download config
 cp $install_dir/config.json /usr/local/etc/xray/config.json
 
 
-
-systemctl daemon-reload
-systemctl enable xray
-systemctl start xray
-systemctl restart xray
 
 # Install apache2 and clone the website
 apt-get install apache2

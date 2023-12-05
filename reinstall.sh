@@ -3,14 +3,11 @@
 apt update 
 
 echo "Uninstalling..."
-# Stop and disable xray service
-systemctl stop xray
-systemctl disable xray 
+
 
 install_dir=/root/xray-configuration
 
 # Remove files
-rm /etc/systemd/system/xray.service
 rm $install_dir/config.json
 rm $install_dir/subscribe.*
 rm /var/www/html/subscribe.*
@@ -49,9 +46,3 @@ echo $key_pair > $install_dir/key_pair.txt
 
 cp $install_dir/config.json /usr/local/etc/xray/config.json
 
-
-
-systemctl daemon-reload
-systemctl enable xray
-systemctl start xray
-systemctl restart xray
