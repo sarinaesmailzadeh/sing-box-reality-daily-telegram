@@ -1,6 +1,5 @@
 # Xray Reality Daily Telegram
 Xray Reality with send configuration in the telegram channel every day.This project send Xray Reality configuration to your channel base on schedule.<br />
-Also you can donate your configuration to Yebekhe Systems.
 
 # Supported Version
 Ubuntu 22.04
@@ -23,32 +22,19 @@ service ssh restart
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
+mkdir /root/xray-configuration
+cd /root/xray-configuration
 ```
 
 * <b> please, if you don't change ssh port, change port 22 to another port. </b>
 
 ```
-touch /root/sing-box/setting.json
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [22,443, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443,2087],
     \"domains\": [
         \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
+        \"discord.com\"
     ],
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
@@ -58,19 +44,18 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
+}">  /root/xray-configuration/setting.json
 ```
 
 * <b>please run these command one by one. </b>
 
 ```
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
-
-sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
-
-bash /root/sing-box/first-time-install-sing-box.sh
+wget https://github.com/majidrezarahnavard/xray-reality-daily-telegram/blob/main/install.sh
+sudo chmod +x /root/xray-configuration/install.sh
+bash /root/xray-configuration/install.sh
 ```
 
 after change the cronjob time, you need to save it. [easy set the time](https://crontab.guru/)
@@ -82,8 +67,8 @@ crontab -e
 Run the command.
 
 ```
-cd /root/sing-box
-./sing-box-telegram
+cd /root/xray-configuration
+./xray-telegram
 ```
 
 
@@ -105,7 +90,7 @@ chat_id is "-10000000000000"
 
 # Fill setting file with your values
 
-Setting file is located in /root/sing-box/settings.json and you can easily modify settings. After changing settings, it necessary to run again `./sing-box-telegram` after changing.  <br />
+Setting file is located in /root/xray-configuration/settings.json and you can easily modify settings. After changing settings, it necessary to run again `./xray-configuration` after changing.  <br />
 
 Edit this setting file base on your needs.<br />
 
@@ -121,31 +106,18 @@ Edit this setting file base on your needs.<br />
 
 ```send_configuration``` is send configuration to the channel. you can choose ```all``` or ```first``` or ```none``` <br />
 ```send_subscriptions``` is send subscription to the channel. you can choose ```true``` or ```false```  <br />
-
+```grpc``` is boolean variable, if the value is ```true``` system set GRPC configuration.
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443,2087],
     \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
+       \"ftp.debian.org\",
+        \"discord.com\"
     ],
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
@@ -155,9 +127,10 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
+}">  /root/xray-configuration/setting.json
 ```
 
 
@@ -166,18 +139,17 @@ Another Method for modify setting.json
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
-nano /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
+nano /root/xray-configuration/setting.json
 ```
 [ آموزش کار کردن با نانو](https://www.youtube.com/watch?v=Aj2pmC0u2ow)<br />
 
 
 
 ```
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
-
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
 ```
 
 Instead of creating the setting.json file, you can also use the following command to create the file and fill it with the default values. <br />
@@ -194,7 +166,7 @@ https://json-gui.esstudio.site/
 ```
 Copy and Paste the JSON Data, which is mentioned in Option 1 in the Input tool of the online tool . after making json format, write it with nano in ```setting.json```
 
-nano /root/sing-box/setting.json
+nano /root/xray-configuration/setting.json
 
 
 
@@ -203,24 +175,16 @@ nano /root/sing-box/setting.json
 
 For check your json file you can use below command line. <br />
 
-```cat /root/sing-box/setting.json```
+```cat /root/xray-configuration/setting.json```
 
 
 You have to see below result. <br />
 ```
 {
-   "ports": [443, 22, 2058, 8880, 10050, 19215, 2082, 8443, 6443, 2096 ],
+   "ports": [443, 22 ],
    "domains": [
        "www.datadoghq.com",
-       "000webhost.ir",
-       "speedtest.iranet.ir",
-       "speed.cloudflare.com",
-       "fruitfulcode.com",
-       "speedtest.iranet.ir",
-       "benecke.com",
-       "tarhpro.ir",
-       "fernandotrueba.com",
-       "mathhub.info"
+       "000webhost.ir"
    ],
    "bot_token" : "627444321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b",
    "chat_id" : "-1003342276432",
@@ -230,8 +194,8 @@ You have to see below result. <br />
    "send_vnstat" : true,
    "aggregate_subscriptions" : [],
    "send_configuration" : "first",
-   "send_subscriptions" : true
-
+   "send_subscriptions" : true,
+   "grpc" : [true, false]
 }
 
 ```
@@ -244,8 +208,8 @@ You can also edit your file with nano editor. <br />
 [ Learn JSON in 10 Minutes ](https://www.youtube.com/watch?v=iiADhChRriM) <br />
 
 ```
-rm -rf /root/sing-box/setting*
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/setting.json
+rm -rf /root/xray-configuration/setting*
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
 nano setting.json
 ```
 And then modify your json file. <br />
@@ -263,27 +227,14 @@ In this case you need to connect server with subscription only. <br />
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [8585, 2054, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095 ],
+    \"ports\": [8585, 2054],
     \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
         \"aws.amazon.com\",
         \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
     ],
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
@@ -293,45 +244,10 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"none\",
-    \"send_subscriptions\" : false
+    \"send_subscriptions\" : false,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
-```
-
-# How to install
-For fast way install and run this service you need download below files and execute them. 
-For security reason, I recommend you to change ssh port. change 9001 to any port that you want.
-
-```
-echo "Port 9001" >> /etc/ssh/sshd_config
-systemctl restart sshd
-service ssh restart
-```
-after you need ``` -p 9001 ``` for ssh connection.for example ```ssh root@ip -p 9001``` <br />
-
-
- 9001 is the default port for SSH connection. don't use this port in setting file. 
-
-If you had a below error please restart your server. 
-```kex_exchange_identification: read: Connection reset by peer
-Connection reset by x.x.x.x port 22
-lost connection
-```
-or restart your service ```service ssh status``` and ```service ssh restart```
-
-
-
-
-Download bash files and add permission for execute.
-```
-cd /root
-mkdir /root/sing-box
-
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
-
-sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
-
-bash /root/sing-box/first-time-install-sing-box.sh
+}">  /root/xray-configuration/setting.json
 ```
 
 
@@ -340,7 +256,7 @@ bash /root/sing-box/first-time-install-sing-box.sh
 Check send the new configuration to telegram channel.
 
 ```
-./sing-box-telegram
+./xray-configuration
 ```
 
 after command execution the configuration send to your telegram channel.
@@ -359,27 +275,14 @@ Don't need to have telegram bot.<br />
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443, 2095   ],
     \"domains\": [
         \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
+        \"discord.com\"
     ],
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
@@ -389,14 +292,14 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
-
-}">  /root/sing-box/setting.json
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
+}">  /root/xray-configuration/setting.json
 ```
 
 After install that explain in upper section. you can change scheduler time in the cronjob.
 ```
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.json
 
 ```
 
@@ -417,27 +320,14 @@ You can change the cronjob time in the cronjob.sh file. [easy set the time](http
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443, 22 ],
     \"domains\": [
         \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
+        \"discord.com\"
     ],
     \"bot_token\" : \"627344321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342176532\",
@@ -447,9 +337,10 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
+}">  /root/xray-configuration/setting.json
 ```
 
 
@@ -457,31 +348,18 @@ echo "{
  # Stop sending donates to the Yebekhe server
 
 
- Just write ```stop``` in ```donate_url``` part of the configuration section. And run ```./sing-box-telegram``` Then remove the ```stop``` form your configuration.
+ Just write ```stop``` in ```donate_url``` part of the configuration section. And run ```./xray-configuration``` Then remove the ```stop``` form your configuration.
 
  ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443, 22],
     \"domains\": [
         \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
+        \"discord.com\"
     ],
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
@@ -491,9 +369,10 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
+}">  /root/xray-configuration/setting.json
 ```
 
 
@@ -518,25 +397,12 @@ http://ip-this-server/aggregate.txt
 
  ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
-touch /root/sing-box/setting.json
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22, 2087, 8880, 10050, 2085, 2082, 8443, 6443, 2096 , 2053 , 2983 , 2052 ,  2086 , 2095   ],
+    \"ports\": [443, 22],
     \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\",
-        \"datadoghq.com\",
-        \"speed.cloudflare.com\",
-        \"www.speedtest.net\",
-        \"aws.amazon.com\",
-        \"eset.com\",
-        \"taunusgaerten.com\",
-        \"pantercon.net\",
-        \"nachtzug.net\",
-        \"ballinstadt.de\",
-        \"test.gjergji.net\",
-        \"atrsun.com\",
         \"cdn.discordapp.com\",
         \"www.theverge.com\"
     ],
@@ -548,9 +414,10 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [ \"http://1.22.33.444/subscribe.txt\" , \"http://2.22.33.444/subscribe.txt\" , \"http://3.22.33.444/subscribe.txt\"],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"grpc\" : [true, false]
 
-}">  /root/sing-box/setting.json
+}">  /root/xray-configuration/setting.json
 ```
 
 
@@ -564,28 +431,28 @@ If you want to aggregate subscriptions with serverless system better used below 
 
 Show errors of cron jobs
 ```
-cat /root/sing-box/cronjob.log
+cat /root/xray-configuration/cronjob.log
 ```
 
 Reinstall the first time install the Xray
 
 ```
 cd /root
-mkdir /root/sing-box
-cd /root/sing-box
+mkdir /root/xray-configuration
+cd /root/xray-configuration
 
-rm -rf /root/sing-box/first-time-install-sing-box.sh*
-wget https://raw.githubusercontent.com/sarinaesmailzadeh/sing-box-reality-daily-telegram/main/first-time-install-sing-box.sh
+rm -rf /root/xray-configuration/install.sh*
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.json
 
-sudo chmod +x /root/sing-box/first-time-install-sing-box.sh
+sudo chmod +x /root/xray-configuration/install.sh
 
-bash /root/sing-box/first-time-install-sing-box.sh
+bash /root/xray-configuration/install.sh
 ```
 
 
 Check Xray version
 ```
-./sing-box version
+xray version
 ```
 
 
@@ -598,8 +465,8 @@ Restart Xray service
 
 Check logs of Xray
 ```
-journalctl -u sing-box.service
-systemctl status sing-box
+journalctl -u xray.service
+systemctl status xray
 ```
 
 Check volume of disk usage in server
@@ -646,43 +513,33 @@ Apart from that, I also needed to apply
 sudo chown -R vnstat:vnstat /var/lib/vnstat
 ```
 
-# Uninstall sing-box
+# Uninstall xray
 
-for uninstall sing-box use below command line:
-```
-bash /root/sing-box/first-time-install-sing-box.sh
-    
->>> choose 2. Uninstall
 
-rm /root/sing-box/setting.json
+you need to run these commands manually:
 
 ```
-
-
-If uninstall didn't work properly, you need to run these commands manually:
-
-```
-# Stop and disable sing-box service
-systemctl stop sing-box
-systemctl disable sing-box
+# Stop and disable xray service
+systemctl stop xray
+systemctl disable xray
 
 # Remove files
-rm /etc/systemd/system/sing-box.service
-rm /root/sing-box/reality.json
-rm /root/sing-box/sing-box
-rm /root/sing-box/subscribe.*
+rm /etc/systemd/system/xray.service
+rm /root/xray-configuration/reality.json
+rm /root/xray-configuration/xray
+rm /root/xray-configuration/subscribe.*
 rm -rf /var/www/hml/subscribe.*
-rm /root/sing-box/public_key.txt
-rm /root/sing-box/sing-box-telegram
-rm /root/sing-box/first-time-install-sing-box.sh
-rm /root/sing-box/reinstall-sing-box.sh
-rm /root/sing-box/make-subscribe.sh
+rm /root/xray-configuration/key_pair.txt
+rm /root/xray-configuration/xray-telegram
+rm /root/xray-configuration/install.sh
+rm /root/xray-configuration/reinstall.sh
+rm /root/xray-configuration/make_subscribe.sh
 ```
 
 And if you want delete setting.json
 
 ```
-rm /root/sing-box/setting.json
+rm /root/xray-configuration/setting.json
 ```
 
 
@@ -702,7 +559,7 @@ journalctl --vacuum-size=50M
 
 
 
-# Find Best SNI for the sing-box
+# Find Best SNI for the xray
 
 You can find the best SNI with the following github repository:
 
@@ -725,7 +582,8 @@ see the cronjob list
 
 result:
 
-```0 9 1-31/3 * * /root/sing-box/sing-box-telegram > /root/sing-box/cronjob.log 2>&1```
+```30 11 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+```
 
 
 
@@ -744,7 +602,7 @@ for example use ```30 9 * * 6``` for the “At 09:30 on Saturday.”
 
 
 
-# Fake HTML and subscribe to Sing-box 
+# Fake HTML and subscribe to xray 
 This part for fake html and give url link to members of the Telegram channel.
 
 

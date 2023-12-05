@@ -20,7 +20,7 @@ func DoSubscribe(setting Setting, StringConfigAll string) (subscriptionNameLink 
 
 	SaveSubscribe("./"+subscriptionNameLink, StringConfigAll)
 
-	_, err = exec.Command("/bin/sh", "./make-subscribe.sh").Output()
+	_, err = exec.Command("/bin/sh", "./make_subscribe.sh").Output()
 	if err != nil {
 		fmt.Printf("error make-subscribe %s", err)
 		return "", err

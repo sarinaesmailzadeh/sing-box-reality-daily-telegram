@@ -36,13 +36,8 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 echo "Generating key pair..."
 key_pair=$(xray x25519)
 echo "Key pair generation complete."
-echo $key_pair
+
 
 #store public key in a file
 touch $install_dir/key_pair.txt
 echo $key_pair > $install_dir/key_pair.txt
-
-
-
-cp $install_dir/config.json /usr/local/etc/xray/config.json
-

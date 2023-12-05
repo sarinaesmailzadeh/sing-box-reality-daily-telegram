@@ -3,10 +3,20 @@
 
 install_dir=/root/xray-configuration
 mkdir $install_dir
+cd $install_dir
 
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/config.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/reinstall.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/make_subscribe.sh
 
-# wget https://raw.githubusercontent.com/majidrezarahnavard/xray-configuration/main/config.json
+#add permitions
+sudo chmod +x $install_dir/reinstall.sh
+sudo chmod +x $install_dir/make_subscribe.sh
 
+rm -rf $install_dir/xray-telegram*
+wget https://github.com/majidrezarahnavard/xray-reality-daily-telegram/releases/download/v.1.0.0/xray-telegram
+sudo chmod +x ./xray-telegram
 
 #instal monitoring
 apt-get update
@@ -42,14 +52,13 @@ key_pair=$(xray x25519)
 echo "Key pair generation complete."
 echo $key_pair
 
-#store public key in a file
+#Store public key in a file
 touch $install_dir/key_pair.txt
 echo $key_pair > $install_dir/key_pair.txt
 
 
 touch $install_dir/log.txt
 
-#TODO Download config
 cp $install_dir/config.json /usr/local/etc/xray/config.json
 
 
