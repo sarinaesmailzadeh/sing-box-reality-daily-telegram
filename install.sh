@@ -2,11 +2,10 @@
 
 
 install_dir=/root/xray-configuration
-mkdir $install_dir
 cd $install_dir
 
 wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/config.json
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/reinstall.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/reinstall.sh
 wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
 wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/make_subscribe.sh
 

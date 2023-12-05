@@ -26,7 +26,17 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 ```
 
-* <b> please, if you don't change ssh port, change port 22 to another port. </b>
+
+* <b>please run these command one by one. </b>
+
+```
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.sh
+sudo chmod +x /root/xray-configuration/install.sh
+bash /root/xray-configuration/install.sh
+```
+
+if you need modify the setting.json file
+
 
 ```
 touch /root/xray-configuration/setting.json
@@ -50,13 +60,7 @@ echo "{
 }">  /root/xray-configuration/setting.json
 ```
 
-* <b>please run these command one by one. </b>
 
-```
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.sh
-sudo chmod +x /root/xray-configuration/install.sh
-bash /root/xray-configuration/install.sh
-```
 
 after change the cronjob time, you need to save it. [easy set the time](https://crontab.guru/)
 
