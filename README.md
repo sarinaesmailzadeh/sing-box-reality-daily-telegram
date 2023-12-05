@@ -53,7 +53,7 @@ echo "{
 * <b>please run these command one by one. </b>
 
 ```
-wget https://github.com/majidrezarahnavard/xray-reality-daily-telegram/blob/main/install.sh
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.sh
 sudo chmod +x /root/xray-configuration/install.sh
 bash /root/xray-configuration/install.sh
 ```
