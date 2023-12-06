@@ -42,12 +42,12 @@ func RenewConfigurations(setting Setting, serverIP string, newReality RealityJso
 		inbound.StreamSettings.RealitySettings.SpiderX = "/doggo"
 
 		name := setting.ChannelName + "-" + setting.Domains[counter]
-		newReality.Inbounds[counter] = inbound
-
 		//GRPC setting
 		if setting.GRPC[counter] {
 			inbound.StreamSettings.Network = "grpc"
 		}
+
+		newReality.Inbounds[counter] = inbound
 
 		//capture setting
 		headerType := ""
