@@ -100,7 +100,7 @@ func (b *Builder) SetConfigurations() *Builder {
 		inbound.StreamSettings.Network = "tcp"
 		inbound.StreamSettings.Security = "reality"
 		inbound.StreamSettings.RealitySettings.Show = false
-		inbound.StreamSettings.RealitySettings.Dest = "google.ir:443"  //b.Setting.Domains[counter] + ":443" //+ strconv.Itoa(b.Setting.Ports[counter])
+		inbound.StreamSettings.RealitySettings.Dest = b.Setting.Domains[counter] + ":443"
 		inbound.StreamSettings.RealitySettings.Xver = 0
 		inbound.StreamSettings.RealitySettings.ServerNames = []string{b.Setting.Domains[counter]}
 		inbound.StreamSettings.RealitySettings.PrivateKey = b.privateKey
