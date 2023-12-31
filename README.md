@@ -1,3 +1,8 @@
+# Warning This method is deprecated 
+# Warning This method is deprecated 
+# Warning This method is deprecated 
+
+
 # Sing Box Reality Daily Telegram
 Sing box Reality with send configuration in the telegram channel every day.This project send sing box Reality configuration to your channel base on schedule.<br />
 Also you can donate your configuration to Yebekhe Systems.
